@@ -11,7 +11,7 @@ Multi-method Discord verification bot built with **discord.py** and **Components
 pip install -r requirements.txt
 
 # 2. Configure environment
-cp .env.example .env
+cp example.env .env
 # edit .env → paste your bot token
 
 # 3. Run
@@ -57,10 +57,6 @@ Enable all three in the [Developer Portal](https://discord.com/developers/applic
 | `button` | One-click verify button |
 | `math` | Solve a random equation (4 choices) |
 | `captcha` | Solve a PIL-generated image code via modal |
-| `vanity` | Set `discord.gg/<vanity>` in custom status |
-| `tag` | Apply the server's clan tag to your profile |
-
-> **vanity** and **tag** methods **automatically revoke** the role if the user removes their status / clan tag.
 
 ---
 
@@ -77,7 +73,7 @@ bot/
 │   └── config.py         ← unified JSON config helpers
 ├── cogs/
 │   ├── prefix.py         ← setprefix / resetprefix / prefix
-│   └── verification.py   ← all 5 verify methods + removal listeners
+│   └── verification.py   ← all 3 verify methods + removal listeners
 │   └── ping              ← Ping of bot
 │   └── uptime            ← Uptime of bot
 │   └── help              ← Help command for users
@@ -86,23 +82,4 @@ bot/
     ├── ready.py          ← on_ready: status + console summary
     ├── mention.py        ← bare @mention → helpful CV2 panel
     └── guild_remove.py   ← cleanup config on guild leave
-```
-
----
-
-## Adding More Cogs / Events
-
-Drop any `.py` file into `cogs/` or `events/` with a standard `setup(bot)` function — it loads automatically on next start. No registration needed.
-
-```python
-# cogs/ping.py
-from discord.ext import commands
-
-class Ping(commands.Cog):
-    @commands.command()
-    async def ping(self, ctx):
-        await ctx.send(f"Pong! {round(ctx.bot.latency * 1000)}ms")
-
-async def setup(bot):
-    await bot.add_cog(Ping(bot))
 ```
