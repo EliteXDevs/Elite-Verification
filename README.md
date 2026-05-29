@@ -27,8 +27,8 @@ Enable all three in the [Developer Portal](https://discord.com/developers/applic
 | Intent | Required for |
 |---|---|
 | **Message Content** | Prefix commands |
-| **Server Members** | Clan-tag role removal on `tag` method |
-| **Presence** | Activity/status role removal on `vanity` method |
+| **Server Members** | Stats Cmds/Total Bot Users|
+| **Presence** | Activity/status |
 
 ---
 
